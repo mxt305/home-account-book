@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String        @id @default(cuid())
+  name        String?
+  username    String        @unique
+  password    String
+  type        Int
+  createdAt   DateTime      @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime      @default(now()) @updatedAt @db.Timestamp(0)
+  AccountData AccountData[]
+}
+
+model BankAccount {
+  id          Int           @id @default(autoincrement()) @db.UnsignedInt
+  name        String        @unique
+  note        String?
+  createdAt   DateTime      @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime      @default(now()) @updatedAt @db.Timestamp(0)
+  AccountData AccountData[]
+}
+
+model AccountType {
+  id          Int           @id @default(autoincrement()) @db.UnsignedInt
+  name        String        @unique
+  note        String?
+  createdAt   DateTime      @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime      @default(now()) @updatedAt @db.Timestamp(0)
+  AccountData AccountData[]
+}
+
+model Member {
+  id          Int           @id @default(autoincrement()) @db.UnsignedInt
+  name        String        @unique
+  note        String?
+  createdAt   DateTime      @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime      @default(now()) @updatedAt @db.Timestamp(0)
+  AccountData AccountData[]
+}
+
+model AccountData {
+  id            Int         @id @default(autoincrement()) @db.UnsignedInt
+  date          DateTime    @db.Date
+  summy         String
+  amount        Int
+  invoiceNumber String
+  createdAt     DateTime    @default(now()) @db.Timestamp(0)
+  updatedAt     DateTime    @default(now()) @updatedAt @db.Timestamp(0)
+  Member        Member      @relation(fields: [memberId], references: [id])
+  memberId      Int         @db.UnsignedInt
+  BankAccount   BankAccount @relation(fields: [bankAccountId], references: [id])
+  bankAccountId Int         @db.UnsignedInt
+  AccountType   AccountType @relation(fields: [accountTypeId], references: [id])
+  accountTypeId Int         @db.UnsignedInt
+  User          User        @relation(fields: [createdUserId], references: [id])
+  createdUserId String
+}
