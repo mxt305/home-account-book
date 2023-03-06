@@ -4,7 +4,10 @@ import type { ReactNode } from "react";
 
 import useUserAuth from "@/hooks/useUserAuth";
 
+import { sideMenuWidth } from "../commonValue";
+
 import SideMenu from "./SideMenu";
+import SideMenuDrawer from "./SideMenuDrawer";
 import TopBar from "./TopBar";
 
 function Layout({ children }: { children: ReactNode }) {
@@ -21,8 +24,8 @@ function Layout({ children }: { children: ReactNode }) {
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           <Box
             sx={{
-              display: "flex",
-              width: "200px",
+              display: { xs: "none", sm: "flex" },
+              width: sideMenuWidth,
               height: "100dvh",
               zIndex: 5000,
               boxShadow: 1,
@@ -31,6 +34,7 @@ function Layout({ children }: { children: ReactNode }) {
           >
             <SideMenu />
           </Box>
+          <SideMenuDrawer />
           <Box sx={{ display: "flex", flexGrow: 1 }}>
             <TopBar user={mUser} />
             <Container maxWidth="lg">{children}</Container>

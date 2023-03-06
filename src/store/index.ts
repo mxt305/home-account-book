@@ -2,12 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import type { ThunkAction, Action } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 
-import { loading } from "./reducers";
+import { loading, menuOpen } from "./reducers";
 
 const makeStore = () =>
   configureStore({
     reducer: {
       loading,
+      menuOpen,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({

@@ -8,6 +8,8 @@ import {
   mdiWallet,
 } from "@mdi/js";
 
+export const sideMenuWidth = "200px";
+
 export interface MenuDataRow {
   name: string;
   path?: string;
