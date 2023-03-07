@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Toolbar } from "@mui/material";
 import React, { useMemo } from "react";
 import type { ReactNode } from "react";
 
@@ -22,6 +22,7 @@ function Layout({ children }: { children: ReactNode }) {
     <>
       {mUser && (
         <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <TopBar user={mUser} />
           <Box
             sx={{
               display: { xs: "none", sm: "flex" },
@@ -35,9 +36,11 @@ function Layout({ children }: { children: ReactNode }) {
             <SideMenu />
           </Box>
           <SideMenuDrawer />
-          <Box sx={{ display: "flex", flexGrow: 1 }}>
-            <TopBar user={mUser} />
-            <Container maxWidth="lg">{children}</Container>
+          <Box component="main" sx={{ display: "flex", flexGrow: 1 }}>
+            <Container maxWidth="lg">
+              <Toolbar sx={{ mb: 1 }} />
+              {children}
+            </Container>
           </Box>
         </Box>
       )}

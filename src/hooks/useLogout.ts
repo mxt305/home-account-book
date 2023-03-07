@@ -2,8 +2,8 @@ import axios from "axios";
 import Router from "next/router";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
-import useLoading from "./useLoading";
 
+import useLoading from "./useLoading";
 import useUserAuth from "./useUserAuth";
 
 function useLogout() {

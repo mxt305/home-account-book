@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import Layout from "../components/layout/MainLayout";
 
 function Home() {
-  return <div>index</div>;
+  return <div>dashboard</div>;
 }
 
 Home.getLayout = function getLayout(page: ReactElement) {

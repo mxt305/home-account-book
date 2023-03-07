@@ -13,6 +13,12 @@ const zhTW = {
     logout: "登出",
     loading: "載入中...",
   },
+  field: {
+    name: "名稱",
+    note: "備註",
+    createdAt: "建立日期",
+    updatedAt: "修改日期",
+  },
   loginPage: {
     title: "使用者登入",
     username: "帳號名稱",

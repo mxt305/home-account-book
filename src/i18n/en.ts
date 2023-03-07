@@ -18,6 +18,12 @@ const en = {
     username: "Username",
     password: "Password",
   },
+  field: {
+    name: "Name",
+    note: "Node",
+    createdAt: "Created Date",
+    updatedAt: "Updated Date",
+  },
   menu: {
     dashboard: "Dashboard",
     user: "User",

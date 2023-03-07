@@ -20,7 +20,7 @@ export const menuData: MenuDataRow[] = [
   { name: "dashboard", icon: mdiViewDashboard, path: "/" },
   { name: "user", icon: mdiAccountSupervisor },
   { name: "member", icon: mdiHumanMaleFemaleChild },
-  { name: "bankAccount", icon: mdiWallet },
+  { name: "bankAccount", icon: mdiWallet, path: "/bankAccount" },
   { name: "accountType", icon: mdiArchive },
   { name: "accountData", icon: mdiCash },
   { name: "monthlyReport", icon: mdiFileChart },

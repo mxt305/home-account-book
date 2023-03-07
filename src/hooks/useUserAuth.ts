@@ -9,15 +9,12 @@ export type UserAuthProps = {
   redirectIfFound?: boolean;
 };
 
-const fetcher = (url: string) => axios(url).then((res) => res.data);
-
 function useUserAuth({
   redirectTo = "",
   redirectIfFound = false,
 }: UserAuthProps = {}) {
   const { data: user, mutate: mutateUser } = useSWR<User | string>(
-    "/api/auth/check",
-    fetcher
+    "/api/auth/check"
   );
 
   useEffect(() => {
