@@ -11,6 +11,7 @@ const zhTW = {
     cancel: "取消",
     login: "登入",
     logout: "登出",
+    search: "搜尋",
     loading: "載入中...",
   },
   field: {

@@ -11,6 +11,7 @@ const en = {
     cancel: "Cancel",
     login: "Login",
     logout: "Logout",
+    search: "Search",
     loading: "loading...",
   },
   loginPage: {

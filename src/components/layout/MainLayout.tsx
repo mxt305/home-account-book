@@ -25,10 +25,10 @@ function Layout({ children }: { children: ReactNode }) {
           <TopBar user={mUser} />
           <Box
             sx={{
-              display: { xs: "none", sm: "flex" },
+              display: { xs: "none", md: "flex" },
               width: sideMenuWidth,
               height: "100dvh",
-              zIndex: 5000,
+              zIndex: 1200,
               boxShadow: 1,
               background: "white",
             }}

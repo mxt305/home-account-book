@@ -31,11 +31,11 @@ function TopBar({ user }: TopBarProp) {
           aria-label="open drawer"
           edge="start"
           onClick={handleMenuButton}
-          sx={{ mr: 2, display: { sm: "none" } }}
+          sx={{ mr: 2, display: { md: "none" } }}
         >
           <Icon path={mdiMenu} size={1} />
         </IconButton>
-        <Box sx={{ width: { xs: 0, sm: sideMenuWidth } }} />
+        <Box sx={{ width: { xs: 0, md: sideMenuWidth } }} />
         <Typography variant="h6">{t("appName")}</Typography>
         <Box sx={{ flexGrow: 1 }} />
         <Box> {user ? user.name : "N/A"}</Box>
