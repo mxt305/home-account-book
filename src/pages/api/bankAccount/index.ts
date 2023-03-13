@@ -14,7 +14,7 @@ export default async function handler(
   if (req.method === "POST") {
     const body = req.body;
     console.log(body);
-    const results = await prisma.bankAccount.create(body);
+    const results = await prisma.bankAccount.create({ data: body });
     res.status(200).json(results);
     //
   }

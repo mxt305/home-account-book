@@ -25,6 +25,13 @@ const zhTW = {
     username: "帳號名稱",
     password: "密碼",
   },
+  message: {
+    create: "資料建立",
+    update: "資料修改",
+    del: "資料刪除",
+    successMsgTempl: "{{action}}成功",
+    faildMsgTempl: "{{action}}失敗",
+  },
   menu: {
     dashboard: "儀錶板",
     user: "使用者管理",

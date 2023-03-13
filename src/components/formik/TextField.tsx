@@ -14,7 +14,7 @@ function TextField({ name, formik, ...props }: TextFieldProps) {
     <MuiTextField
       {...props}
       name={name}
-      value={value}
+      value={value || ""}
       onChange={formik.handleChange}
       error={!!errors}
       helperText={errors ? (errors as any) : ""}

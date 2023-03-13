@@ -14,6 +14,7 @@ import { FunctionButton, SearchTextField } from "@/components/common";
 import DataTable from "@/components/DataTable";
 import Layout from "@/components/layout/MainLayout";
 import TableRowControl from "@/components/TableRowControl";
+
 import BankAccountFormDialog from "./_formDialog";
 
 function BankAccountList() {

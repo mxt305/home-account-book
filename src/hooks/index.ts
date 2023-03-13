@@ -10,3 +10,5 @@ export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
 export { default as useLogin } from "./useLogin";
 export { default as useLogout } from "./useLogout";
 export { default as useUserAuth } from "./useUserAuth";
+export { default as useCUD } from "./useCUD";
+export { default as useFormData } from "./useFormData";

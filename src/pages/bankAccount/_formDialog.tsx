@@ -12,11 +12,13 @@ import React, { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 
+import { useFormData } from "@/hooks";
+
 import BankAccountForm, { BankAccountValue } from "./_form";
 
 export type BankAccountFormDialogProps = DialogProps & {
   dataId?: number;
-  onDataChange: () => void;
+  onDataChange?: () => void;
 };
 
 function BankAccountFormDialog({
@@ -26,8 +28,11 @@ function BankAccountFormDialog({
   ...props
 }: BankAccountFormDialogProps) {
   const { t } = useTranslation();
+  const formData = useFormData<BankAccountValue>({
+    apiPath: "/api/bankAccount",
+    id: dataId,
+  });
   const handleClose = (event?: MouseEvent) => {
-    formik.resetForm();
     onClose && onClose(event || {}, "backdropClick");
   };
   const validationSchema = yup.object({
@@ -35,14 +40,17 @@ function BankAccountFormDialog({
     note: yup.string().label(t("field.note")).nullable(),
   });
   const formik = useFormik<BankAccountValue>({
-    initialValues: {
+    initialValues: formData.data || {
       name: "",
       note: "",
     },
+    enableReinitialize: true,
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
-      handleClose();
+      formData.saveData(values).then(() => {
+        onDataChange && onDataChange();
+        handleClose();
+      });
     },
   });
   const handleSaveButton = async () => {

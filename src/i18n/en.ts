@@ -25,6 +25,13 @@ const en = {
     createdAt: "Created Date",
     updatedAt: "Updated Date",
   },
+  message: {
+    create: "Data created",
+    update: "Data modified",
+    del: "Data deleted",
+    successMsgTempl: "{{action}} successfully",
+    faildMsgTempl: "{{action}} failed",
+  },
   menu: {
     dashboard: "Dashboard",
     user: "User",
