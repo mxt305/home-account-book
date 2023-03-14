@@ -13,6 +13,7 @@ const zhTW = {
     logout: "登出",
     search: "搜尋",
     loading: "載入中...",
+    noData: "無資料",
   },
   field: {
     name: "名稱",
@@ -31,6 +32,7 @@ const zhTW = {
     del: "資料刪除",
     successMsgTempl: "{{action}}成功",
     faildMsgTempl: "{{action}}失敗",
+    delCheck: "確認刪除{{data}}？",
   },
   menu: {
     dashboard: "儀錶板",

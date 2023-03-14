@@ -1,18 +1,24 @@
 import { Box, Stack } from "@mui/material";
-import { BankAccount } from "@prisma/client";
 import type { FormikProps } from "formik";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
 import TextField from "@/components/formik/TextField";
 
-export type BankAccountValue = Pick<BankAccount, "name" | "note">;
-
-export interface BankAccountFormProps {
-  formik: FormikProps<BankAccountValue>;
+export interface CommonDataValue {
+  name: string;
+  note: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-function BankAccountForm({ formik }: BankAccountFormProps) {
+export interface CommonDataFormProps<DataValue extends CommonDataValue> {
+  formik: FormikProps<DataValue>;
+}
+
+function CommonDataForm<DataValue extends CommonDataValue>({
+  formik,
+}: CommonDataFormProps<DataValue>) {
   const { t } = useTranslation();
   return (
     <Box
@@ -41,4 +47,4 @@ function BankAccountForm({ formik }: BankAccountFormProps) {
   );
 }
 
-export default BankAccountForm;
+export default CommonDataForm;

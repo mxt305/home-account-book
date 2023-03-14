@@ -13,6 +13,7 @@ const en = {
     logout: "Logout",
     search: "Search",
     loading: "loading...",
+    noData: "No Data",
   },
   loginPage: {
     title: "User Login",
@@ -31,6 +32,7 @@ const en = {
     del: "Data deleted",
     successMsgTempl: "{{action}} successfully",
     faildMsgTempl: "{{action}} failed",
+    delCheck: "Are you sure to delete?",
   },
   menu: {
     dashboard: "Dashboard",

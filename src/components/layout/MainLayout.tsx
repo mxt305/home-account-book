@@ -38,7 +38,7 @@ function Layout({ children }: { children: ReactNode }) {
           <SideMenuDrawer />
           <Box component="main" sx={{ display: "flex", flexGrow: 1 }}>
             <Container maxWidth="lg">
-              <Toolbar sx={{ mb: 1 }} />
+              <Toolbar sx={{ mb: 2 }} />
               {children}
             </Container>
           </Box>

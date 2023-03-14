@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { BankAccount } from "@prisma/client";
+import { Member } from "@prisma/client";
 import {
   createColumnHelper,
   getCoreRowModel,
@@ -17,24 +17,24 @@ import Layout from "@/components/layout/MainLayout";
 import TableRowControl from "@/components/TableRowControl";
 import { useDeleteDialog } from "@/hooks";
 
-const API_PATH = "api/bankAccount";
+const API_PATH = "api/member";
 
-function BankAccountList() {
-  const { data, mutate } = useSWR<BankAccount[]>(API_PATH);
+function MemberList() {
+  const { data, mutate } = useSWR<Member[]>(API_PATH);
   const { t } = useTranslation();
   const [searchText, setSearchText] = useState("");
   const [formOpen, setFormOpen] = React.useState(false);
   const [currentDataId, setCurrentDataId] = useState<number | undefined>(
     undefined
   );
-  const columnHelper = createColumnHelper<BankAccount>();
+  const columnHelper = createColumnHelper<Member>();
   const { DeleteDialog, setIdToDelete } = useDeleteDialog({
     apiPath: API_PATH,
     onDeleted: () => {
       mutate();
     },
   });
-  const columns: ColumnDef<BankAccount, any>[] = [
+  const columns: ColumnDef<Member, any>[] = [
     columnHelper.accessor("id", {
       header: () => "#",
       cell: (info) => info.getValue(),
@@ -51,7 +51,7 @@ function BankAccountList() {
       id: "row-control",
       header: "",
       cell: (info) => (
-        <TableRowControl<BankAccount>
+        <TableRowControl<Member>
           cellContext={info}
           onEdit={(rowData) => {
             setCurrentDataId(rowData.id);
@@ -73,7 +73,7 @@ function BankAccountList() {
     }
     return data.filter((row) => row.name.includes(searchText));
   }, [searchText, data]);
-  const table = useReactTable<BankAccount>({
+  const table = useReactTable<Member>({
     data: mData,
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -82,7 +82,7 @@ function BankAccountList() {
   return (
     <>
       <Typography component="h1" variant="h4" gutterBottom>
-        {t("menu.bankAccount")}
+        {t("menu.member")}
       </Typography>
       <Box
         mb={2}
@@ -105,7 +105,7 @@ function BankAccountList() {
           />
         </Box>
       </Box>
-      <DataTable<BankAccount> tableData={table} />
+      <DataTable<Member> tableData={table} />
       <CommonDataFormDialog
         apiPath={API_PATH}
         dataId={currentDataId}
@@ -122,8 +122,8 @@ function BankAccountList() {
   );
 }
 
-export default BankAccountList;
+export default MemberList;
 
-BankAccountList.getLayout = function getLayout(page: ReactElement) {
+MemberList.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };

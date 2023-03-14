@@ -6,40 +6,42 @@ import {
   DialogTitle,
 } from "@mui/material";
 import type { DialogProps } from "@mui/material";
-import { BankAccount } from "@prisma/client";
 import { useFormik } from "formik";
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 
 import { useFormData } from "@/hooks";
 
-import BankAccountForm, { BankAccountValue } from "./_form";
+import CommonDataForm, { CommonDataValue } from "./CommonDataForm";
 
-export type BankAccountFormDialogProps = DialogProps & {
+export type CommonDataFormDialogProps = DialogProps & {
+  apiPath: string;
   dataId?: number;
   onDataChange?: () => void;
 };
 
-function BankAccountFormDialog({
+function CommonDataFormDialog({
+  apiPath,
   dataId,
   onClose,
   onDataChange,
   ...props
-}: BankAccountFormDialogProps) {
+}: CommonDataFormDialogProps) {
   const { t } = useTranslation();
-  const formData = useFormData<BankAccountValue>({
-    apiPath: "/api/bankAccount",
+  const formData = useFormData<CommonDataValue>({
+    apiPath,
     id: dataId,
   });
   const handleClose = (event?: MouseEvent) => {
     onClose && onClose(event || {}, "backdropClick");
+    formik.resetForm();
   };
   const validationSchema = yup.object({
     name: yup.string().label(t("field.name")).required(),
     note: yup.string().label(t("field.note")).nullable(),
   });
-  const formik = useFormik<BankAccountValue>({
+  const formik = useFormik<CommonDataValue>({
     initialValues: formData.data || {
       name: "",
       note: "",
@@ -53,6 +55,7 @@ function BankAccountFormDialog({
       });
     },
   });
+
   const handleSaveButton = async () => {
     await formik.submitForm();
   };
@@ -60,7 +63,7 @@ function BankAccountFormDialog({
     <Dialog onClose={onClose} maxWidth="md" fullWidth {...props}>
       <DialogTitle>{t(`common.${dataId ? "edit" : "add"}`)}</DialogTitle>
       <DialogContent>
-        <BankAccountForm formik={formik} />
+        <CommonDataForm formik={formik} />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleSaveButton}>{t("common.save")}</Button>
@@ -70,4 +73,4 @@ function BankAccountFormDialog({
   );
 }
 
-export default BankAccountFormDialog;
+export default CommonDataFormDialog;
