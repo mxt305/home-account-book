@@ -1,10 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { AccountType } from "@prisma/client";
-import {
-  createColumnHelper,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { createColumnHelper } from "@tanstack/react-table";
 import type { ColumnDef } from "@tanstack/react-table";
 import React, { ChangeEvent, ReactElement, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -12,7 +8,7 @@ import useSWR from "swr";
 
 import { FunctionButton, SearchTextField } from "@/components/common";
 import CommonDataFormDialog from "@/components/CommonDataFormDialog";
-import DataTable from "@/components/DataTable";
+import CommonDataTable from "@/components/CommonDataTable";
 import Layout from "@/components/layout/MainLayout";
 import TableRowControl from "@/components/TableRowControl";
 import { useDeleteDialog } from "@/hooks";
@@ -34,36 +30,39 @@ function AccountTypeList() {
       mutate();
     },
   });
-  const columns: ColumnDef<AccountType, any>[] = [
-    columnHelper.accessor("id", {
-      header: () => "#",
-      cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("name", {
-      header: () => t("field.name"),
-      cell: (info) => info.getValue(),
-    }),
-    columnHelper.accessor("note", {
-      header: () => t("field.note"),
-      cell: (info) => info.getValue(),
-    }),
-    {
-      id: "row-control",
-      header: "",
-      cell: (info) => (
-        <TableRowControl<AccountType>
-          cellContext={info}
-          onEdit={(rowData) => {
-            setCurrentDataId(rowData.id);
-            setFormOpen(true);
-          }}
-          onDelete={(rowData) => {
-            setIdToDelete(rowData.id);
-          }}
-        />
-      ),
-    },
-  ];
+  const columns = useMemo<ColumnDef<AccountType, any>[]>(
+    () => [
+      columnHelper.accessor("id", {
+        header: () => "#",
+        cell: (info) => info.getValue(),
+      }),
+      columnHelper.accessor("name", {
+        header: () => t("field.name"),
+        cell: (info) => info.getValue(),
+      }),
+      columnHelper.accessor("note", {
+        header: () => t("field.note"),
+        cell: (info) => info.getValue(),
+      }),
+      {
+        id: "row-control",
+        header: "",
+        cell: (info) => (
+          <TableRowControl<AccountType>
+            cellContext={info}
+            onEdit={(rowData) => {
+              setCurrentDataId(rowData.id);
+              setFormOpen(true);
+            }}
+            onDelete={(rowData) => {
+              setIdToDelete(rowData.id);
+            }}
+          />
+        ),
+      },
+    ],
+    [columnHelper, setIdToDelete, t]
+  );
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
   };
@@ -73,12 +72,6 @@ function AccountTypeList() {
     }
     return data.filter((row) => row.name.includes(searchText));
   }, [searchText, data]);
-  const table = useReactTable<AccountType>({
-    data: mData,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
-
   return (
     <>
       <Typography component="h1" variant="h4" gutterBottom>
@@ -105,7 +98,7 @@ function AccountTypeList() {
           />
         </Box>
       </Box>
-      <DataTable<AccountType> tableData={table} />
+      <CommonDataTable data={mData} columns={columns} />
       <CommonDataFormDialog
         apiPath={API_PATH}
         dataId={currentDataId}

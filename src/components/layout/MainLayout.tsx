@@ -26,6 +26,8 @@ function Layout({ children }: { children: ReactNode }) {
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
+              position: "fixed",
+              top: 0,
               width: sideMenuWidth,
               height: "100dvh",
               zIndex: 1200,
@@ -35,7 +37,13 @@ function Layout({ children }: { children: ReactNode }) {
           >
             <SideMenu />
           </Box>
-          <SideMenuDrawer />
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              width: sideMenuWidth,
+            }}
+          />
+          <Box />
           <Box component="main" sx={{ display: "flex", flexGrow: 1 }}>
             <Container maxWidth="lg">
               <Toolbar sx={{ mb: 2 }} />

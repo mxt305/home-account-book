@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import type { DialogProps } from "@mui/material";
 import { useFormik } from "formik";
-import React, { MouseEvent, useEffect } from "react";
+import React, { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 

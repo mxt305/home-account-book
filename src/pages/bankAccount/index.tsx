@@ -1,10 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { BankAccount } from "@prisma/client";
-import {
-  createColumnHelper,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { createColumnHelper } from "@tanstack/react-table";
 import type { ColumnDef } from "@tanstack/react-table";
 import React, { ChangeEvent, ReactElement, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -12,7 +8,7 @@ import useSWR from "swr";
 
 import { FunctionButton, SearchTextField } from "@/components/common";
 import CommonDataFormDialog from "@/components/CommonDataFormDialog";
-import DataTable from "@/components/DataTable";
+import CommonDataTable from "@/components/CommonDataTable";
 import Layout from "@/components/layout/MainLayout";
 import TableRowControl from "@/components/TableRowControl";
 import { useDeleteDialog } from "@/hooks";
@@ -73,11 +69,6 @@ function BankAccountList() {
     }
     return data.filter((row) => row.name.includes(searchText));
   }, [searchText, data]);
-  const table = useReactTable<BankAccount>({
-    data: mData,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
 
   return (
     <>
@@ -105,7 +96,7 @@ function BankAccountList() {
           />
         </Box>
       </Box>
-      <DataTable<BankAccount> tableData={table} />
+      <CommonDataTable data={mData} columns={columns} />
       <CommonDataFormDialog
         apiPath={API_PATH}
         dataId={currentDataId}

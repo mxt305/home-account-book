@@ -12,7 +12,7 @@ import useSWR from "swr";
 
 import { FunctionButton, SearchTextField } from "@/components/common";
 import CommonDataFormDialog from "@/components/CommonDataFormDialog";
-import DataTable from "@/components/DataTable";
+import CommonDataTable from "@/components/CommonDataTable";
 import Layout from "@/components/layout/MainLayout";
 import TableRowControl from "@/components/TableRowControl";
 import { useDeleteDialog } from "@/hooks";
@@ -105,7 +105,7 @@ function MemberList() {
           />
         </Box>
       </Box>
-      <DataTable<Member> tableData={table} />
+      <CommonDataTable data={mData} columns={columns} />
       <CommonDataFormDialog
         apiPath={API_PATH}
         dataId={currentDataId}

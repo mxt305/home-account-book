@@ -1,4 +1,7 @@
+import { mdiArrowDown, mdiArrowUp } from "@mdi/js";
+import Icon from "@mdi/react";
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -26,13 +29,30 @@ function DataTable<DataRow>({ tableData, ...props }: DataTableProps<DataRow>) {
           {tableData.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableCell key={header.id} component="th">
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
+                <TableCell
+                  key={header.id}
+                  component="th"
+                  width={header.getSize()}
+                >
+                  {header.isPlaceholder ? null : (
+                    <Button
+                      onClick={header.column.getToggleSortingHandler()}
+                      fullWidth
+                      sx={{ padding: 0, justifyContent: "flex-start" }}
+                      disabled={!header.column.getCanSort()}
+                      endIcon={
+                        {
+                          asc: <Icon path={mdiArrowUp} size={0.8} />,
+                          desc: <Icon path={mdiArrowDown} size={0.8} />,
+                        }[header.column.getIsSorted() as string] ?? undefined
+                      }
+                    >
+                      {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
+                    </Button>
+                  )}
                 </TableCell>
               ))}
             </TableRow>
