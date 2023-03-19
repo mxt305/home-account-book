@@ -21,7 +21,7 @@ function useCUD() {
       })
       .catch((error) => {
         console.log(error);
-        let msg = t("message:successMsgTempl", { action: t(actionName) });
+        let msg = t("message:faildMsgTempl", { action: t(actionName) });
         if (error.response) {
           msg = `${msg} (${error.response.data})`;
         }
@@ -45,7 +45,7 @@ function useCUD() {
       })
       .catch((error) => {
         console.log(error);
-        let msg = t("message:successMsgTempl", { action: t(actionName) });
+        let msg = t("message:faildMsgTempl", { action: t(actionName) });
         if (error.response) {
           msg = `${msg} (${error.response.data})`;
         }
@@ -65,7 +65,7 @@ function useCUD() {
       })
       .catch((error) => {
         console.log(error);
-        let msg = t("message:successMsgTempl", { action: t(actionName) });
+        let msg = t("message:faildMsgTempl", { action: t(actionName) });
         if (error.response) {
           msg = `${msg} (${error.response.data})`;
         }

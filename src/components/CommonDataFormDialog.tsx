@@ -9,9 +9,9 @@ import type { DialogProps } from "@mui/material";
 import { useFormik } from "formik";
 import { useTranslation } from "next-i18next";
 import React, { MouseEvent } from "react";
-import * as yup from "yup";
 
 import { useFormData } from "@/hooks";
+import { createCommonValidation } from "@/validation";
 
 import CommonDataForm, { CommonDataValue } from "./CommonDataForm";
 
@@ -37,17 +37,15 @@ function CommonDataFormDialog({
     onClose && onClose(event || {}, "backdropClick");
     formik.resetForm();
   };
-  const validationSchema = yup.object({
-    name: yup.string().label(t("field:name")).required(),
-    note: yup.string().label(t("field:note")).nullable(),
-  });
+  const validationSchema = createCommonValidation(t);
+
   const formik = useFormik<CommonDataValue>({
     initialValues: formData.data || {
       name: "",
       note: "",
     },
     enableReinitialize: true,
-    //validationSchema: validationSchema,
+    validationSchema: validationSchema,
     onSubmit: (values) => {
       formData.saveData(values).then(() => {
         onDataChange && onDataChange();
