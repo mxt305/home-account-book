@@ -1,7 +1,7 @@
 import axios from "axios";
+import { useTranslation } from "next-i18next";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
-import { useTranslation } from "react-i18next";
 
 import useLoading from "./useLoading";
 import useUserAuth from "./useUserAuth";
@@ -22,7 +22,7 @@ function useLogin() {
         .post("/api/auth/login", loginValues)
         .then(() => {
           toast.success(
-            t("message.successMsgTempl", { action: t("common.login") })
+            t("message:successMsgTempl", { action: t("common:login") })
           );
           mutateUser();
         })

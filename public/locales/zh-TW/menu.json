@@ -1,0 +1,9 @@
+{
+  "dashboard": "儀錶板",
+  "user": "使用者管理",
+  "member": "成員管理",
+  "bankAccount": "帳戶管理",
+  "accountType": "開銷類型管理",
+  "accountData": "開銷管理",
+  "monthlyReport": "月開銷報表"
+}

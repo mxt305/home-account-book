@@ -6,8 +6,10 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import type { ColumnDef } from "@tanstack/react-table";
+import { GetStaticProps } from "next";
+import { ScriptProps } from "next/script";
+import { useTranslation } from "next-i18next";
 import React, { ChangeEvent, ReactElement, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
 import useSWR from "swr";
 
 import { FunctionButton, SearchTextField } from "@/components/common";
@@ -16,6 +18,7 @@ import CommonDataTable from "@/components/CommonDataTable";
 import Layout from "@/components/layout/MainLayout";
 import TableRowControl from "@/components/TableRowControl";
 import { useDeleteDialog } from "@/hooks";
+import { getI18nProps } from "@/lib/getStatic";
 
 const API_PATH = "api/member";
 
@@ -40,11 +43,11 @@ function MemberList() {
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("name", {
-      header: () => t("field.name"),
+      header: () => t("field:name"),
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("note", {
-      header: () => t("field.note"),
+      header: () => t("field:note"),
       cell: (info) => info.getValue(),
     }),
     {
@@ -82,7 +85,7 @@ function MemberList() {
   return (
     <>
       <Typography component="h1" variant="h4" gutterBottom>
-        {t("menu.member")}
+        {t("menu:member")}
       </Typography>
       <Box
         mb={2}
@@ -127,3 +130,6 @@ export default MemberList;
 MemberList.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
+
+export const getStaticProps: GetStaticProps<ScriptProps> = async ({ locale }) =>
+  getI18nProps(locale, ["common", "field", "menu", "message"]);

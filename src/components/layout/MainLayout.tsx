@@ -1,8 +1,11 @@
 import { Box, Container, Toolbar } from "@mui/material";
+import { GetStaticProps } from "next";
+import { ScriptProps } from "next/script";
 import React, { useMemo } from "react";
 import type { ReactNode } from "react";
 
 import useUserAuth from "@/hooks/useUserAuth";
+import { getI18nProps } from "@/lib/getStatic";
 
 import { sideMenuWidth } from "../commonValue";
 

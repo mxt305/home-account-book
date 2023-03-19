@@ -1,6 +1,6 @@
 import axios from "axios";
+import { useTranslation } from "next-i18next";
 import toast from "react-hot-toast";
-import { useTranslation } from "react-i18next";
 
 import useLoading from "./useLoading";
 
@@ -11,17 +11,17 @@ function useCUD() {
   const handleCreate = async (
     urlPath: string,
     formValue: any,
-    actionName = "message.create"
+    actionName = "message:create"
   ) => {
     addLoading();
     return await axios
       .post(urlPath, formValue)
       .then(() => {
-        toast.success(t("message.successMsgTempl", { action: t(actionName) }));
+        toast.success(t("message:successMsgTempl", { action: t(actionName) }));
       })
       .catch((error) => {
         console.log(error);
-        let msg = t("message.successMsgTempl", { action: t(actionName) });
+        let msg = t("message:successMsgTempl", { action: t(actionName) });
         if (error.response) {
           msg = `${msg} (${error.response.data})`;
         }
@@ -35,17 +35,17 @@ function useCUD() {
   const handleUpdate = async (
     urlPath: string,
     formValue: any,
-    actionName = "message.update"
+    actionName = "message:update"
   ) => {
     addLoading();
     return await axios
       .put(urlPath, formValue)
       .then(() => {
-        toast.success(t("message.successMsgTempl", { action: t(actionName) }));
+        toast.success(t("message:successMsgTempl", { action: t(actionName) }));
       })
       .catch((error) => {
         console.log(error);
-        let msg = t("message.successMsgTempl", { action: t(actionName) });
+        let msg = t("message:successMsgTempl", { action: t(actionName) });
         if (error.response) {
           msg = `${msg} (${error.response.data})`;
         }
@@ -56,16 +56,16 @@ function useCUD() {
       });
   };
 
-  const handleDelete = async (urlPath: string, actionName = "message.del") => {
+  const handleDelete = async (urlPath: string, actionName = "message:del") => {
     addLoading();
     return await axios
       .delete(urlPath)
       .then(() => {
-        toast.success(t("message.successMsgTempl", { action: t(actionName) }));
+        toast.success(t("message:successMsgTempl", { action: t(actionName) }));
       })
       .catch((error) => {
         console.log(error);
-        let msg = t("message.successMsgTempl", { action: t(actionName) });
+        let msg = t("message:successMsgTempl", { action: t(actionName) });
         if (error.response) {
           msg = `${msg} (${error.response.data})`;
         }

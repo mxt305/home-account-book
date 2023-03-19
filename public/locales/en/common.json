@@ -1,0 +1,16 @@
+{
+  "appName": "Sample Family Payment Manager System",
+  "func": "Features",
+  "add": "Add",
+  "edit": "Edit",
+  "del": "Delete",
+  "save": "Save",
+  "filter": "Filter",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "login": "Login",
+  "logout": "Logout",
+  "search": "Search",
+  "loading": "loading...",
+  "noData": "No Data"
+}

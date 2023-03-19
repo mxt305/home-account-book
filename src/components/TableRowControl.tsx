@@ -2,8 +2,8 @@ import { mdiDelete, mdiPencil } from "@mdi/js";
 import { Icon } from "@mdi/react";
 import { Box, Button, IconButton, Tooltip } from "@mui/material";
 import type { CellContext } from "@tanstack/react-table";
+import { useTranslation } from "next-i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 export interface TableRowControlProps<RowData> {
   cellContext: CellContext<RowData, any>;
@@ -24,7 +24,7 @@ function TableRowControl<RowData>({
   const row = cellContext.row.original;
   return (
     <Box sx={{ display: "flex", gap: 1 }}>
-      <Tooltip title={t("common.edit")}>
+      <Tooltip title={t("common:edit")}>
         <IconButton
           size="small"
           color="primary"
@@ -37,7 +37,7 @@ function TableRowControl<RowData>({
           <Icon path={mdiPencil} size={1} />
         </IconButton>
       </Tooltip>
-      <Tooltip title={t("common.del")}>
+      <Tooltip title={t("common:del")}>
         <IconButton
           size="small"
           color="error"

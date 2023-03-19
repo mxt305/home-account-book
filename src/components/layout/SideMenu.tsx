@@ -9,8 +9,8 @@ import {
   ListItemText,
 } from "@mui/material";
 import Router from "next/router";
+import { useTranslation } from "next-i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import useLogout from "@/hooks/useLogout";
 
@@ -35,7 +35,7 @@ function SideMenu() {
                 <Icon path={item.icon} size={1} />
               </ListItemIcon>
             )}
-            <ListItemText primary={t(`menu.${item.name}`)} />
+            <ListItemText primary={t(`menu:${item.name}`)} />
           </ListItemButton>
         </ListItem>
       ))}
@@ -49,7 +49,7 @@ function SideMenu() {
           <ListItemIcon>
             <Icon path={mdiLogout} size={1} />
           </ListItemIcon>
-          <ListItemText primary={t("common.logout")} />
+          <ListItemText primary={t("common:logout")} />
         </ListItemButton>
       </ListItem>
     </List>

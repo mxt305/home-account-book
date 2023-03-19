@@ -8,8 +8,8 @@ import {
 import Icon from "@mdi/react";
 import { Button } from "@mui/material";
 import type { ButtonProps } from "@mui/material";
+import { useTranslation } from "next-i18next";
 import React, { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
 
 export type FunctionButtonType = "add" | "edit" | "delete" | "save" | "cancel";
 
@@ -24,23 +24,23 @@ type FunctionButtonData = Partial<ButtonProps> & {
 
 const buttonMapping: Record<FunctionButtonType, FunctionButtonData> = {
   add: {
-    text: "common.add",
+    text: "common:add",
     icon: mdiPlus,
   },
   edit: {
-    text: "common.edit",
+    text: "common:edit",
     icon: mdiPencil,
   },
   delete: {
-    text: "common.del",
+    text: "common:del",
     icon: mdiDelete,
   },
   save: {
-    text: "common.save",
+    text: "common:save",
     icon: mdiContentSave,
   },
   cancel: {
-    text: "common.cancel",
+    text: "common:cancel",
     icon: mdiCancel,
   },
 };

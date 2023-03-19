@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import { memo, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 import useCUD from "./useCUD";
 
@@ -44,11 +44,11 @@ function useDeleteDialog({ apiPath, onDeleted }: DeleteDialogConfig) {
         aria-describedby="delete-alert-dialog-description"
       >
         <DialogTitle id="delete-alert-dialog-title">
-          {t("common.del")}
+          {t("common:del")}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="delete-alert-dialog-description">
-            {t("message.delCheck", { data: `(id=${idToDelete})` })}
+            {t("message:delCheck", { data: `(id=${idToDelete})` })}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -57,9 +57,9 @@ function useDeleteDialog({ apiPath, onDeleted }: DeleteDialogConfig) {
               deleteData();
             }}
           >
-            {t("common.del")}
+            {t("common:del")}
           </Button>
-          <Button onClick={handleClose}>{t("common.cancel")}</Button>
+          <Button onClick={handleClose}>{t("common:cancel")}</Button>
         </DialogActions>
       </Dialog>
     );

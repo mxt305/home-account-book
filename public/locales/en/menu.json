@@ -1,0 +1,9 @@
+{
+  "dashboard": "Dashboard",
+  "user": "User",
+  "member": "Famliy Member",
+  "bankAccount": "Bank Account",
+  "accountType": "Payment Type",
+  "accountData": "Payment",
+  "monthlyReport": "Monthly Report"
+}

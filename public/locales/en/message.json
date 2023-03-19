@@ -1,0 +1,8 @@
+{
+  "create": "Data created",
+  "update": "Data modified",
+  "del": "Data deleted",
+  "successMsgTempl": "{{action}} successfully",
+  "faildMsgTempl": "{{action}} failed",
+  "delCheck": "Are you sure to delete?"
+}

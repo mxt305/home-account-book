@@ -2,8 +2,8 @@ import { mdiMagnify } from "@mdi/js";
 import Icon from "@mdi/react";
 import { InputAdornment, TextField } from "@mui/material";
 import type { TextFieldProps } from "@mui/material";
+import { useTranslation } from "next-i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 function SearchTextField(props: TextFieldProps) {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ function SearchTextField(props: TextFieldProps) {
     <TextField
       variant="standard"
       id="input-search"
-      label={t("common.search")}
+      label={t("common:search")}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

@@ -1,7 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import type { FormikProps } from "formik";
+import { useTranslation } from "next-i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 import TextField from "@/components/formik/TextField";
 
@@ -32,14 +32,14 @@ function CommonDataForm<DataValue extends CommonDataValue>({
           fullWidth
           id="name"
           name="name"
-          label={t("field.name")}
+          label={t("field:name")}
           formik={formik}
         />
         <TextField
           fullWidth
           id="note"
           name="note"
-          label={t("field.note")}
+          label={t("field:note")}
           formik={formik}
         />
       </Stack>

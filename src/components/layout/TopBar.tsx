@@ -2,8 +2,8 @@ import { mdiMenu } from "@mdi/js";
 import Icon from "@mdi/react";
 import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import { User } from "@prisma/client";
+import { useTranslation } from "next-i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { useAppSelector } from "@/hooks";

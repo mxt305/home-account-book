@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
-import "@/i18n";
 import { CacheProvider } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import axios from "axios";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import type { AppProps } from "next/app";
+import { appWithTranslation } from "next-i18next";
 import { ReactElement, ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
@@ -29,7 +29,7 @@ type AppPropsWithLayout = AppProps & {
 
 const fetcher = (url: string) => axios(url).then((res) => res.data);
 
-export default function App({ Component, ...rest }: AppPropsWithLayout) {
+function App({ Component, ...rest }: AppPropsWithLayout) {
   const { store, props } = wrapper.useWrappedStore(rest);
   const { pageProps, emotionCache = clientSideEmotionCache } = props;
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -48,3 +48,5 @@ export default function App({ Component, ...rest }: AppPropsWithLayout) {
     </SWRConfig>
   );
 }
+
+export default appWithTranslation(App);

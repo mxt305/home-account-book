@@ -13,8 +13,8 @@ import {
 import type { TableProps } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { flexRender, useReactTable } from "@tanstack/react-table";
+import { useTranslation } from "next-i18next";
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 export type DataTableProps<DataRow> = TableProps & {
   tableData: ReturnType<typeof useReactTable<DataRow>>;
@@ -74,7 +74,7 @@ function DataTable<DataRow>({ tableData, ...props }: DataTableProps<DataRow>) {
                 colSpan={tableData.getAllColumns().length}
                 sx={{ textAlign: "center", color: grey[500] }}
               >
-                {t("common.noData")}
+                {t("common:noData")}
               </TableCell>
             </TableRow>
           )}

@@ -7,8 +7,8 @@ import {
 } from "@mui/material";
 import type { DialogProps } from "@mui/material";
 import { useFormik } from "formik";
+import { useTranslation } from "next-i18next";
 import React, { MouseEvent } from "react";
-import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 
 import { useFormData } from "@/hooks";
@@ -38,8 +38,8 @@ function CommonDataFormDialog({
     formik.resetForm();
   };
   const validationSchema = yup.object({
-    name: yup.string().label(t("field.name")).required(),
-    note: yup.string().label(t("field.note")).nullable(),
+    name: yup.string().label(t("field:name")).required(),
+    note: yup.string().label(t("field:note")).nullable(),
   });
   const formik = useFormik<CommonDataValue>({
     initialValues: formData.data || {
@@ -47,7 +47,7 @@ function CommonDataFormDialog({
       note: "",
     },
     enableReinitialize: true,
-    validationSchema: validationSchema,
+    //validationSchema: validationSchema,
     onSubmit: (values) => {
       formData.saveData(values).then(() => {
         onDataChange && onDataChange();
@@ -61,13 +61,13 @@ function CommonDataFormDialog({
   };
   return (
     <Dialog onClose={onClose} maxWidth="md" fullWidth {...props}>
-      <DialogTitle>{t(`common.${dataId ? "edit" : "add"}`)}</DialogTitle>
+      <DialogTitle>{t(`common:${dataId ? "edit" : "add"}`)}</DialogTitle>
       <DialogContent>
         <CommonDataForm formik={formik} />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleSaveButton}>{t("common.save")}</Button>
-        <Button onClick={handleClose}>{t("common.cancel")}</Button>
+        <Button onClick={handleSaveButton}>{t("common:save")}</Button>
+        <Button onClick={handleClose}>{t("common:cancel")}</Button>
       </DialogActions>
     </Dialog>
   );
