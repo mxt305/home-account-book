@@ -3,5 +3,15 @@
   "name": "Name",
   "note": "Node",
   "createdAt": "Created Date",
-  "updatedAt": "Updated Date"
+  "updatedAt": "Updated Date",
+  "username": "Username",
+  "password": "Password",
+  "type": "Type",
+  "member": "Member",
+  "date": "Date",
+  "summary": "Summary",
+  "amount": "Amount",
+  "invoiceNumber": "Invoice No.",
+  "accountType": "Category",
+  "bankAccount": "Account"
 }

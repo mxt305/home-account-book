@@ -12,5 +12,6 @@
   "logout": "Logout",
   "search": "Search",
   "loading": "loading...",
-  "noData": "No Data"
+  "noData": "No Data",
+  "noSelect": "None"
 }

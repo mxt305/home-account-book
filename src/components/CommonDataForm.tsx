@@ -6,6 +6,7 @@ import React from "react";
 import TextField from "@/components/formik/TextField";
 
 export interface CommonDataValue {
+  id?: number;
   name: string;
   note: string;
   createdAt?: Date;

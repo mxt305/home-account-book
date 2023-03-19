@@ -52,7 +52,7 @@ CREATE TABLE `Member` (
 CREATE TABLE `AccountData` (
     `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `date` DATE NOT NULL,
-    `summy` VARCHAR(191) NOT NULL,
+    `summary` VARCHAR(191) NOT NULL,
     `amount` INTEGER NOT NULL,
     `invoiceNumber` VARCHAR(191) NOT NULL,
     `createdAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),

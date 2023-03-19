@@ -18,7 +18,9 @@ model User {
   type        Int
   createdAt   DateTime      @default(now()) @db.Timestamp(0)
   updatedAt   DateTime      @default(now()) @updatedAt @db.Timestamp(0)
+  memberId    Int?          @unique @db.UnsignedInt
   AccountData AccountData[]
+  Member      Member?       @relation(fields: [memberId], references: [id])
 }
 
 model BankAccount {
@@ -46,12 +48,13 @@ model Member {
   createdAt   DateTime      @default(now()) @db.Timestamp(0)
   updatedAt   DateTime      @default(now()) @updatedAt @db.Timestamp(0)
   AccountData AccountData[]
+  User        User?
 }
 
 model AccountData {
   id            Int         @id @default(autoincrement()) @db.UnsignedInt
   date          DateTime    @db.Date
-  summy         String
+  summary       String
   amount        Int
   invoiceNumber String
   createdAt     DateTime    @default(now()) @db.Timestamp(0)

@@ -3,5 +3,15 @@
   "name": "名稱",
   "note": "備註",
   "createdAt": "建立日期",
-  "updatedAt": "修改日期"
+  "updatedAt": "修改日期",
+  "username": "帳號名稱",
+  "password": "密碼",
+  "type": "類型",
+  "member": "成員",
+  "date": "日期",
+  "summary": "摘要",
+  "amount": "金額",
+  "invoiceNumber": "統一發票編號",
+  "accountType": "開銷類別",
+  "bankAccount": "資金帳戶"
 }

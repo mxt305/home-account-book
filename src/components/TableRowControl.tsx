@@ -25,30 +25,34 @@ function TableRowControl<RowData>({
   return (
     <Box sx={{ display: "flex", gap: 1 }}>
       <Tooltip title={t("common:edit")}>
-        <IconButton
-          size="small"
-          color="primary"
-          disabled={!editable}
-          onClick={() => {
-            onEdit && onEdit(row);
-          }}
-          aria-label="edit"
-        >
-          <Icon path={mdiPencil} size={1} />
-        </IconButton>
+        <span>
+          <IconButton
+            size="small"
+            color="primary"
+            disabled={!editable}
+            onClick={() => {
+              onEdit && onEdit(row);
+            }}
+            aria-label="edit"
+          >
+            <Icon path={mdiPencil} size={1} />
+          </IconButton>
+        </span>
       </Tooltip>
       <Tooltip title={t("common:del")}>
-        <IconButton
-          size="small"
-          color="error"
-          disabled={!deletable}
-          onClick={() => {
-            onDelete && onDelete(row);
-          }}
-          aria-label="delete"
-        >
-          <Icon path={mdiDelete} size={1} />
-        </IconButton>
+        <span>
+          <IconButton
+            size="small"
+            color="error"
+            disabled={!deletable}
+            onClick={() => {
+              onDelete && onDelete(row);
+            }}
+            aria-label="delete"
+          >
+            <Icon path={mdiDelete} size={1} />
+          </IconButton>
+        </span>
       </Tooltip>
     </Box>
   );
