@@ -18,10 +18,10 @@ export interface MenuDataRow {
 
 export const menuData: MenuDataRow[] = [
   { name: "dashboard", icon: mdiViewDashboard, path: "/" },
-  { name: "user", icon: mdiAccountSupervisor },
+  { name: "user", icon: mdiAccountSupervisor, path: "/user" },
   { name: "member", icon: mdiHumanMaleFemaleChild, path: "/member" },
   { name: "bankAccount", icon: mdiWallet, path: "/bankAccount" },
   { name: "accountType", icon: mdiArchive, path: "/accountType" },
-  { name: "accountData", icon: mdiCash },
+  { name: "accountData", icon: mdiCash, path: "/accountData" },
   { name: "monthlyReport", icon: mdiFileChart },
 ];

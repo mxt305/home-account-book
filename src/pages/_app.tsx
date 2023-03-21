@@ -1,6 +1,8 @@
 import "@/styles/globals.css";
 import { CacheProvider } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import axios from "axios";
 import { GetStaticProps, NextPage } from "next";
 import type { AppProps } from "next/app";
@@ -37,12 +39,14 @@ function App({ Component, ...rest }: AppPropsWithLayout) {
     <SWRConfig value={{ fetcher }}>
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
-          <Provider store={store}>
-            <CssBaseline />
-            {getLayout(<Component {...pageProps} />)}
-            <Toaster position="bottom-center" />
-            <LoadingBackdrop />
-          </Provider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Provider store={store}>
+              <CssBaseline />
+              {getLayout(<Component {...pageProps} />)}
+              <Toaster position="bottom-center" />
+              <LoadingBackdrop />
+            </Provider>
+          </LocalizationProvider>
         </ThemeProvider>
       </CacheProvider>
     </SWRConfig>

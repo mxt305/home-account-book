@@ -11,16 +11,15 @@ datasource db {
 }
 
 model User {
-  id          String        @id @default(cuid())
-  name        String?
-  username    String        @unique
-  password    String
-  type        Int
-  createdAt   DateTime      @default(now()) @db.Timestamp(0)
-  updatedAt   DateTime      @default(now()) @updatedAt @db.Timestamp(0)
-  memberId    Int?          @unique @db.UnsignedInt
-  AccountData AccountData[]
-  Member      Member?       @relation(fields: [memberId], references: [id])
+  id        String   @id @default(cuid())
+  name      String?
+  username  String   @unique
+  password  String
+  type      Int
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamp(0)
+  memberId  Int?     @unique @db.UnsignedInt
+  Member    Member?  @relation(fields: [memberId], references: [id])
 }
 
 model BankAccount {
@@ -56,7 +55,9 @@ model AccountData {
   date          DateTime    @db.Date
   summary       String
   amount        Int
-  invoiceNumber String
+  invoiceNumber String?
+  createdBy     String
+  updatedBy     String?
   createdAt     DateTime    @default(now()) @db.Timestamp(0)
   updatedAt     DateTime    @default(now()) @updatedAt @db.Timestamp(0)
   Member        Member      @relation(fields: [memberId], references: [id])
@@ -65,6 +66,4 @@ model AccountData {
   bankAccountId Int         @db.UnsignedInt
   AccountType   AccountType @relation(fields: [accountTypeId], references: [id])
   accountTypeId Int         @db.UnsignedInt
-  User          User        @relation(fields: [createdUserId], references: [id])
-  createdUserId String
 }
